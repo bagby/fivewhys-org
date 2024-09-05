@@ -2,10 +2,10 @@ import Model from '@ember-data/model';
 import { attr, belongsTo, hasMany } from '@ember-data/model';
 
 export default class PremiseModel extends Model {
-  @attr('string') summary;
-  @attr('string') fullText;
+  @attr summary;
+  @attr fullText;
 
-  @belongsTo user;
+  @belongsTo('user', { async: true, inverse: 'premises' }) user;
 
-  @hasMany('comment') comments;
+  @hasMany('comment', { async: true }) comments;
 }
